@@ -1,4 +1,4 @@
-FROM certbot/certbot
+FROM certbot/certbot:arm64v8-latest
 
 COPY ./entrypoint.sh ./
 
