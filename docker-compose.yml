@@ -1,0 +1,24 @@
+version: "3.5"
+
+services:
+  ctfd:
+    container_name: ctfd
+    hostname: ctfd
+    build: ./ctfd
+    volumes:
+      - ctfd_data:/CTFd/CTFd
+    ports:
+      - "8000:8000"
+    environment:
+      TZ: "Asia/Tokyo"
+    #networks:
+    #  - intranet
+
+volumes:
+  ctfd_data:
+    driver: local
+
+networks:
+  backend:
+    name: backend
+    internal: true
