@@ -29,9 +29,10 @@ services:
     container_name: certbot
     # on olacle arm vm 
     #image: certbot/certbot:arm64v8-latest
-    image: certbot/certbot
+    #image: certbot/certbot
+    build: lets_encrypt
     # 複数ドメインは非対応
-    entrypoint: /bin/sh entrypoint.sh
+    #entrypoint: /bin/sh entrypoint.sh
     volumes:
       - lets_encrypt:/etc/letsencrypt
       - logs:/var/log
@@ -39,6 +40,9 @@ services:
     networks:
       - backend
       - frontend
+    environment:
+      CERT_DOMAIN: ${CERT_DOMAIN}
+      CERT_EMAIL: ${CERT_EMAIL}
     #depends_on:
       # ルーティング完了まで待ってくれない可能性があるのでssl側でシェルスクリプト必要かもしれない
     #  - ssl
