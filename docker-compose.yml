@@ -37,6 +37,7 @@ services:
       - lets_encrypt:/etc/letsencrypt
       - logs:/var/log
       #- web_content:/var/www/html
+    # docker-compose run --service-ports lets_encrypt
     ports:
       - "80:80"
     networks:
