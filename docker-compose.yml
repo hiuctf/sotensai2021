@@ -45,6 +45,7 @@ services:
     environment:
       CERT_DOMAIN: ${CERT_DOMAIN}
       CERT_EMAIL: ${CERT_EMAIL}
+      CERT_OPTION: ${CERT_OPTION}
     #depends_on:
       # ルーティング完了まで待ってくれない可能性があるのでssl側でシェルスクリプト必要かもしれない
     #  - ssl
