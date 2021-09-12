@@ -28,8 +28,8 @@ services:
   lets_encrypt:
     container_name: certbot
     # on olacle arm vm 
-    #image: certbot/certbot:arm64v8-latest
-    image: certbot/certbot
+    image: certbot/certbot:arm64v8-latest
+    #image: certbot/certbot
     # 複数ドメインは非対応
     command: certonly --agree-tos --standalone --email $CERT_EMAIL --non-interactive -d $CERT_DOMAIN cd /etc/letsencrypt/live/$CERT_DOMAIN/ && cat fullchain.pem privkey.pem > server.pem
     volumes:
