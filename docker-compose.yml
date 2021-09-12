@@ -14,7 +14,27 @@ services:
     #networks:
     #  - intranet
 
+  lets_encrypt:
+    container_name: certbot
+    # on olacle arm vm 
+    #image: certbot/certbot:arm64v8-latest
+    image: certbot/certbot
+    command: certonly --agree-tos --standalone --email $CERT_EMAIL --non-interactive -d $CERT_DOMAIN
 volumes:
+      - lets_encrypt:/etc/letsencrypt
+      - logs:/var/log
+      #- web_content:/var/www/html
+    networks:
+      - backend
+      - frontend
+    #depends_on:
+      # ルーティング完了まで待ってくれない可能性があるのでssl側でシェルスクリプト必要かもしれない
+    #  - ssl
+
+volumes:
+  lets_encrypt:
+    driver: local
+  
   ctfd_data:
     driver: local
 
