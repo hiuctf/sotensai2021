@@ -13,6 +13,17 @@ services:
       TZ: "Asia/Tokyo"
     #networks:
     #  - intranet
+    
+  ssl:
+    container_name: ssl_offloader
+    hostname: haproxy
+    build: ssl
+    volumes:
+      - ./ssl/config:/usr/local/etc/haproxy
+      - lets_encrypt:/etc/letsencrypt
+    networks:
+      - backend
+      - frontend
 
   lets_encrypt:
     container_name: certbot
@@ -20,7 +31,7 @@ services:
     #image: certbot/certbot:arm64v8-latest
     image: certbot/certbot
     command: certonly --agree-tos --standalone --email $CERT_EMAIL --non-interactive -d $CERT_DOMAIN
-volumes:
+    volumes:
       - lets_encrypt:/etc/letsencrypt
       - logs:/var/log
       #- web_content:/var/www/html
@@ -38,7 +49,16 @@ volumes:
   ctfd_data:
     driver: local
 
+  logs:
+    driver: local
+
+  #web_content:
+  #  driver: local
+
 networks:
   backend:
     name: backend
     internal: true
+
+  frontend:
+    name: frontend
