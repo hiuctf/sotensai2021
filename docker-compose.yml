@@ -28,8 +28,8 @@ services:
   lets_encrypt:
     container_name: certbot
     # on olacle arm vm 
-    #image: certbot/certbot:arm64v8-latest
-    image: certbot/certbot
+    image: certbot/certbot:arm64v8-latest
+    #image: certbot/certbot
     # 複数ドメインは非対応
     entrypoint: /bin/sh entrypoint.sh
     volumes:
