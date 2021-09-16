@@ -24,6 +24,8 @@ services:
     networks:
       - backend
       - frontend
+    environment:
+      CTFD_FQDN: ${CERT_FQDN}
 
   lets_encrypt:
     container_name: certbot
@@ -44,7 +46,7 @@ services:
       - backend
       - frontend
     environment:
-      CERT_DOMAIN: ${CERT_DOMAIN}
+      CERT_FQDN: ${CERT_FQDN}
       CERT_EMAIL: ${CERT_EMAIL}
       CERT_OPTION: ${CERT_OPTION}
     #depends_on:
