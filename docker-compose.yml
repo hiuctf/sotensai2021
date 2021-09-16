@@ -11,8 +11,8 @@ services:
       - "8000:8000"
     environment:
       TZ: "Asia/Tokyo"
-    #networks:
-    #  - intranet
+    networks:
+      - backend
     
   ssl:
     container_name: ssl_offloader
@@ -24,11 +24,15 @@ services:
     networks:
       - backend
       - frontend
+    ports:
+      - 80:80
+      - 443:443
     environment:
       CTFD_FQDN: ${CERT_FQDN}
 
   lets_encrypt:
     container_name: certbot
+    hostname: certbot
     # on olacle arm vm 
     #image: certbot/certbot:arm64v8-latest
     #image: certbot/certbot
@@ -43,7 +47,6 @@ services:
     ports:
       - "80:80"
     networks:
-      - backend
       - frontend
     environment:
       CERT_FQDN: ${CERT_FQDN}
