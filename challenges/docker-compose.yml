@@ -1,0 +1,9 @@
+version: "3.5"
+
+services:
+  web-standard:
+    build: web-content
+    ports:
+      - 10100:80
+    
+  

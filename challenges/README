@@ -1,0 +1,14 @@
+問題サーバーのDockerfileが入ったディレクトリを設置する場所です
+`docker-compose run --service-ports some_challenge`のように使います
+
+例）
+.
+|- docker-compose.yml
+|
+|- Web01
+|  |- Dockerfile
+|  |- data
+|     |- some_image.png
+|     |- some_script.sh
+|
+|- Web02
