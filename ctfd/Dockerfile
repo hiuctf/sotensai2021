@@ -12,7 +12,7 @@ RUN apt update \
       build-essential \
  && useradd -m ctfd \
  && gpasswd -a ctfd sudo \
- && echo "%ctfd    ALL=(ALL)   NOPASSWD:    ALL" >> /etc/sudoers
+ && echo "%ctfd ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 # ↑あまりいいとは思えないsolution
 
 # root以外で実行する時もUSER rootの時にENV PATH通さないと動かなかった
@@ -20,16 +20,16 @@ ENV PATH $PATH:/home/ctfd/.local/bin
 
 USER ctfd
 
-RUN sudo mkdir CTFd \
+RUN sudo mkdir -p /opt/CTFd \
  && sudo chown ctfd:ctfd CTFd \
  && curl -L https://github.com/CTFd/CTFd/archive/refs/tags/3.4.0.tar.gz \
-  | tar zxv -C /CTFd --strip-components 1 \
+  | tar zxv -C /opt/CTFd --strip-components 1 \
  && sudo ln -s /usr/bin/python3 /usr/bin/python \
- && cd CTFd \
+ && cd /opt/CTFd \
  && ./prepare.sh 
 
 RUN echo $PATH
 
-WORKDIR /CTFd
+WORKDIR /opt/CTFd
 
 ENTRYPOINT ./docker-entrypoint.sh
