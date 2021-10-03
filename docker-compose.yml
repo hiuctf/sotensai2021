@@ -7,6 +7,8 @@ services:
     build: ./ctfd
     volumes:
       - ctfd_data:/CTFd/CTFd
+      - ./CTFd/plugins:/opt/CTFd/CTFd/plugins
+      - ./CTFd/themes:/pt/CTFd/CTFd/themes
     ports:
       - "8000:8000"
     environment:
