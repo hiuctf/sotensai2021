@@ -13,6 +13,7 @@ RUN apt update \
  && useradd -m ctfd \
  && gpasswd -a ctfd sudo \
  && echo "%ctfd    ALL=(ALL)   NOPASSWD:    ALL" >> /etc/sudoers
+# ↑あまりいいとは思えないsolution
 
 # root以外で実行する時もUSER rootの時にENV PATH通さないと動かなかった
 ENV PATH $PATH:/home/ctfd/.local/bin
