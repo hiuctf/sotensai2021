@@ -24,6 +24,7 @@ services:
     networks:
       - backend
       - frontend
+      - challenge
     ports:
       - 80:80
       - 443:443
@@ -44,14 +45,15 @@ services:
       - logs:/var/log
       #- web_content:/var/www/html
     # docker-compose run --service-ports lets_encrypt
-    ports:
-      - "80:80"
+    #ports:
+    #  - "80:80"
     networks:
       - frontend
     environment:
       CERT_FQDN: ${CERT_FQDN}
       CERT_EMAIL: ${CERT_EMAIL}
       CERT_OPTION: ${CERT_OPTION}
+      #CERTFILE_DIR: /etc/letsencrypt
     #depends_on:
       # ルーティング完了まで待ってくれない可能性があるのでssl側でシェルスクリプト必要かもしれない
     #  - ssl
@@ -76,3 +78,8 @@ networks:
 
   frontend:
     name: frontend
+
+  challenge:
+    external:
+      name: challenge-network
+    #internal: true
