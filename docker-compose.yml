@@ -76,7 +76,7 @@ volumes:
 networks:
   backend:
     name: backend
-    internal: true
+    #internal: true
 
   frontend:
     name: frontend
