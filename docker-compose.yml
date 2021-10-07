@@ -22,7 +22,7 @@ services:
     build: ssl
     volumes:
       - ./ssl/config:/usr/local/etc/haproxy
-      - lets_encrypt:/etc/letsencrypt
+      - /etc/letsencrypt:/etc/letsencrypt
     networks:
       - backend
       - frontend
