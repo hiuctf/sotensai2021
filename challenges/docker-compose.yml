@@ -1,9 +1,28 @@
 version: "3.5"
 
 services:
-  web-standard:
-    build: web-content
-    ports:
-      - 10100:80
-    
-  
+  web-static:
+    hostname: web-static
+    image: nginx
+    restart: always
+    networks:
+      - challenge
+    volumes:
+      - /var/www/html:/usr/share/nginx/html
+  #web01:
+  #  hostname: web01
+  #  build: web01
+  #  restart: always
+  #  networks:
+  #    - challenge
+  #web02:
+  #  hostname: web02
+  #  build: web02
+  #  restart: always
+  #  networks:
+  #    - challenge
+
+networks:
+  challenge:
+    external:
+      name: challenge
