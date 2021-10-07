@@ -18,18 +18,28 @@ RUN apt update \
 # root以外で実行する時もUSER rootの時にENV PATH通さないと動かなかった
 ENV PATH $PATH:/home/ctfd/.local/bin
 
+RUN mkdir -p /usr/local/ctfd \
+ && chown ctfd:ctfd /usr/local/ctfd \
+ && mkdir -p /etc/ctfd/ \
+ && mkdir -p /var/lib/ctfd
+
 USER ctfd
 
-RUN sudo mkdir -p /opt/CTFd \
- && sudo chown ctfd:ctfd CTFd \
- && curl -L https://github.com/CTFd/CTFd/archive/refs/tags/3.4.0.tar.gz \
-  | tar zxv -C /opt/CTFd --strip-components 1 \
+RUN curl -L https://github.com/CTFd/CTFd/archive/refs/tags/3.4.0.tar.gz \
+  | tar zxv -C /usr/local/ctfd --strip-components 1 \
  && sudo ln -s /usr/bin/python3 /usr/bin/python \
- && cd /opt/CTFd \
+ #&& mv /usr/local/ctfd/CTFd/ctfd.db    /var/lib/CTFd/ \
+ && cd /usr/local/ctfd \
  && ./prepare.sh 
+
+RUN sudo mv /usr/local/ctfd/CTFd/config.ini /etc/ctfd/config.ini \
+ && sudo ln -s /var/lib/ctfd/ctfd.db /usr/local/ctfd/CTFd/ctfd.db \
+ && sudo ln -s /etc/ctfd/config.ini /usr/local/ctfd/CTFd/config.ini \
+ && sudo chown ctfd:ctfd /etc/ctfd \
+ && sudo chown ctfd:ctfd /var/lib/ctfd 
 
 RUN echo $PATH
 
-WORKDIR /opt/CTFd
+WORKDIR /usr/local/ctfd
 
 ENTRYPOINT ./docker-entrypoint.sh
