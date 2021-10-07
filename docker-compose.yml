@@ -10,7 +10,7 @@ services:
       - ./CTFd/plugins:/opt/CTFd/CTFd/plugins
       - ./CTFd/themes:/pt/CTFd/CTFd/themes
     ports:
-      - "8000:8000"
+      - 8000:8000
     environment:
       TZ: "Asia/Tokyo"
     networks:
@@ -83,5 +83,5 @@ networks:
 
   challenge:
     external:
-      name: challenge-network
+      name: challenge
     #internal: true
