@@ -6,9 +6,12 @@
 __pycache__/
 *.py[cdo]
 
-tmp/
+tmp/*
+!*/.gitnone
 
-ctfd/CTFd/plugins/
-ctfd/CTFd/themes/
+ctfd/CTFd/plugins/*
+ctfd/CTFd/plugins/*
+ctfd/CTFd/themes/*
+
 
 *.zip
