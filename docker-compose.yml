@@ -1,20 +1,20 @@
 version: "3.5"
 
 services:
-  ctfd:
-    container_name: ctfd
-    hostname: ctfd
-    build: ./ctfd
-    volumes:
-      - ctfd_data:/CTFd/CTFd
-      - ./CTFd/plugins:/usr/local/ctfd/CTFd/plugins
-      - ./CTFd/themes:/usr/local/ctfd/CTFd/themes
-    ports:
-      - 8000:8000
-    environment:
-      TZ: "Asia/Tokyo"
-    networks:
-      - backend
+  #ctfd:
+  #  container_name: ctfd
+  #  hostname: ctfd
+  #  build: ./ctfd
+  #  volumes:
+  #    - ctfd_data:/CTFd/CTFd
+  #    - ./CTFd/plugins:/usr/local/ctfd/CTFd/plugins
+  #    - ./CTFd/themes:/usr/local/ctfd/CTFd/themes
+  #  ports:
+  #    - 8000:8000
+  #  environment:
+  #    TZ: "Asia/Tokyo"
+  #  networks:
+  #    - backend
     
   ssl:
     container_name: ssl_offloader
