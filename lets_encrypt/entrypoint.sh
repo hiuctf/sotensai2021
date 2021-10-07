@@ -21,5 +21,5 @@ else
   && date +%s > lastexec \
   && cd /etc/letsencrypt/live/$CERT_FQDN/ \
   && cat fullchain.pem privkey.pem > server.pem \
-  && ln -sf /etc/letsencrypt/$CERT_FQDN/live/server.pem /etc/letsencrypt/certfiles/server.pem
+  && ln -sf /etc/letsencrypt/live/$CERT_FQDN/server.pem /etc/letsencrypt/certfiles/server.pem
 fi
