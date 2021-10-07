@@ -42,4 +42,6 @@ RUN echo $PATH
 
 WORKDIR /usr/local/ctfd
 
+COPY ./CTFd/config.ini /etc/ctfd/
+
 ENTRYPOINT ./docker-entrypoint.sh
