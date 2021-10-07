@@ -43,7 +43,7 @@ services:
     # 複数ドメインは非対応
     #entrypoint: /bin/sh entrypoint.sh
     volumes:
-      - lets_encrypt:/etc/letsencrypt
+      - /etc/letsencrypt:/etc/letsencrypt
       - logs:/var/log
       #- web_content:/var/www/html
     # docker-compose run --service-ports lets_encrypt
