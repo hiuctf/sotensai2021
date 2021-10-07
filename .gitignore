@@ -1,3 +1,14 @@
 .vs
+.vscode
 
 .env
+
+__pycache__/
+*.py[cdo]
+
+tmp/
+
+ctfd/CTFd/plugins/
+ctfd/CTFd/themes/
+
+*.zip
