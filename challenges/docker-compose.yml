@@ -1,14 +1,7 @@
 version: "3.5"
 
 services:
-  web-static:
-    hostname: web-static
-    image: nginx
-    restart: always
-    networks:
-      - challenge
-    volumes:
-      - /var/www/html:/usr/share/nginx/html
+
   #web01:
   #  hostname: web01
   #  build: web01
