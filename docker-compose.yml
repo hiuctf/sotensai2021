@@ -69,6 +69,30 @@ services:
     volumes:
       - /var/www/html:/usr/share/nginx/html
 
+  sqli_db:
+    hostname: sqli
+    build: challenges/sqli/mysql
+    #command: --default-authentication-plugin=mysqlnative_password
+    restart: always
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: "true"
+      MYSQL_USER: sqli
+      MYSQL_PASSWORD: sqli
+    networks:
+      - sqli_nw
+
+  php:
+    hostname: php
+    build: challenges/sqli/php
+    restart: always
+    volumes:
+      - /var/www/html:/var/www/html/
+    depends_on:
+      - sqli_db
+    networks:
+      - challenge
+      - sqli_nw
+
 volumes:
   lets_encrypt:
     driver: local
@@ -94,3 +118,7 @@ networks:
     external:
       name: challenge
     #internal: true
+
+  sqli_nw:
+    name: sqli_nw
+    internal: true
