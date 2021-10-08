@@ -1,11 +1,11 @@
-from flask import Flask, redirect, make_response, render_template, Blueprint
+from flask import Flask, redirect, make_response, render_template, Blueprint, url_for
 app = Flask(__name__)
 app_main = Blueprint("main", __name__, url_prefix="/web/04", static_folder="static/assets", static_url_path="/assets")
 static_images = Blueprint("images", __name__, url_prefix="/web/04", static_folder="static/images", static_url_path="/images")
 
 @app_main.route("/")
 def redirect_index():
-    return redirect("/index.html")
+    return redirect(url_for("main.index"))
 
 @app_main.route("/index.html")
 def index():
