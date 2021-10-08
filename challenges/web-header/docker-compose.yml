@@ -1,0 +1,15 @@
+version: "3.5"
+
+services:
+  web_head:
+    hostname: web-header
+    build: .
+    restart: always
+    networks:
+      - challenge
+
+
+networks:
+  challenge:
+    external:
+      name: challenge
