@@ -72,7 +72,7 @@ services:
   sqli_db:
     hostname: sqli
     build: challenges/sqli/mysql
-    command: --default-authentication-plugin=mysqlnative_password
+    #command: --default-authentication-plugin=mysqlnative_password
     restart: always
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: "true"
