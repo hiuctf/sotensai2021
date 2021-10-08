@@ -3,7 +3,7 @@ session_start();
 
 $id = filter_input(INPUT_POST,"userid");
 $pwd = filter_input(INPUT_POST,"password");
-$db = new PDO("mysql:host=127.0.0.1;unix_soket=/home/guest/mysql/mysqld.sock;dbname=test","root","pwd");
+$db = new PDO("mysql:host=sqli;dbname=test","sqli","sqli");
 $sql = "select * from test_user where user_id='$id' and password='$pwd'";
 $ps = $db->query($sql);
 
