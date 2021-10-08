@@ -8,7 +8,7 @@ echo last exec: $LASTEXEC, time now: $TIME_NOW
 
 
 mkdir -p /etc/letsencrypt/certfiles
-chmod a+rx /etc/letsencrypt/$CERT_FQDN/live
+chmod a+rx /etc/letsencrypt/live/$CERT_FQDN/
 if [ $CERT_FQDN = "" ] ; then 
   echo "env: \$CERT_FQDN not set!"
   return 1
