@@ -1,5 +1,5 @@
 from flask import Flask, redirect, make_response, render_template, Blueprint
-app = Flask(__name__, static_folder="static/assets", static_url_path="/assets")
+app = Flask(__name__, static_folder="static/assets", static_url_path="/assets", url_prefix="/web/04")
 static_images = Blueprint("images", __name__, static_folder="static/images", static_url_path="/images")
 app.register_blueprint(static_images)
 
