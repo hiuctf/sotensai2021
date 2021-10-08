@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
 
-  db:
+  sqli_db:
     hostname: sqli
     build: ./mysql
     #command: --default-authentication-plugin=mysqlnative_password
@@ -11,8 +11,10 @@ services:
       MYSQL_RANDOM_ROOT_PASSWORD: "true"
       MYSQL_USER: sqli
       MYSQL_PASSWORD: sqli
+    volumes:
+      - ./mysql/cnf/:/etc/mysql/conf.d/
     networks:
-      - sqli_db
+      - sqli_nw
 
   php:
     hostname: php
@@ -21,10 +23,10 @@ services:
     volumes:
       - /var/www/html:/var/www/html/
     depends_on:
-      - db
+      - sqli_db
     networks:
       - challenge
-      - sqli_db
+      - sqli_nw
 
 
 networks:
@@ -33,6 +35,6 @@ networks:
     external:
       name: challenge
 
-  sqli_db:
-    name: sqli_db
+  sqli_nw:
+    name: sqli_nw
     internal: true
