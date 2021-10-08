@@ -7,6 +7,8 @@ services:
     restart: always
     networks:
       - challenge
+    ports:
+      - 10780:80
 
 
 networks:
