@@ -78,6 +78,8 @@ services:
       MYSQL_RANDOM_ROOT_PASSWORD: "true"
       MYSQL_USER: sqli
       MYSQL_PASSWORD: sqli
+    volumes:
+      - ./mysql/cnf/:/etc/mysql/conf.d/
     networks:
       - sqli_nw
 
