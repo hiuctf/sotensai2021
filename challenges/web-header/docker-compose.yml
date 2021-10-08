@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   web_head:
-    hostname: web-header
+    hostname: header
     build: .
     restart: always
     networks:
