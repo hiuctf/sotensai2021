@@ -32,16 +32,18 @@ RUN curl -L https://github.com/CTFd/CTFd/archive/refs/tags/3.4.0.tar.gz \
  && cd /usr/local/ctfd \
  && ./prepare.sh 
 
-RUN sudo mv /usr/local/ctfd/CTFd/config.ini /etc/ctfd/config.ini \
- && sudo ln -s /var/lib/ctfd/ctfd.db /usr/local/ctfd/CTFd/ctfd.db \
- && sudo ln -s /etc/ctfd/config.ini /usr/local/ctfd/CTFd/config.ini \
- && sudo chown ctfd:ctfd /etc/ctfd \
- && sudo chown ctfd:ctfd /var/lib/ctfd 
+#RUN sudo mv /usr/local/ctfd/CTFd/config.ini /etc/ctfd/config.ini \
+# && sudo ln -s /var/lib/ctfd/ctfd.db /usr/local/ctfd/CTFd/ctfd.db \
+# && sudo ln -s /etc/ctfd/config.ini /usr/local/ctfd/CTFd/config.ini \
+# && sudo chown ctfd:ctfd /etc/ctfd \
+# && sudo chown ctfd:ctfd /var/lib/ctfd 
 
 RUN echo $PATH
 
 WORKDIR /usr/local/ctfd
 
+COPY ./CTFd/plugins/* /usr/local/ctfd/CTFd/plugins/
+COPY ./CTFd/themes/* /usr/local/ctfd/CTFd/themes/
 COPY ./CTFd/config.ini /etc/ctfd/
 
 ENTRYPOINT ./docker-entrypoint.sh
