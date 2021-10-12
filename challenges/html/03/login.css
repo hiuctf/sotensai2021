@@ -1,0 +1,41 @@
+h1{
+    font-size: 1.5rem;
+    color: black;
+    text-align: center;
+}
+
+body{
+    background-color: rgba(134, 134, 134, 0.418);
+}
+
+section{
+    margin-top: 20%;
+}
+
+button{
+    width:70%;
+    background-color: rgba(2, 6, 247, 0.267);
+}
+
+.btn{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    width:20rem;
+}
+.user{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    width:20rem;
+}
+.pass{
+    margin-top: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    width:20rem;
+}
+.message{
+    text-align: center;
+    color: red;
+}
